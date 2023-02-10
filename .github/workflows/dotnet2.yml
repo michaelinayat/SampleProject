@@ -24,4 +24,9 @@ jobs:
       run: nuget restore SampleProjects.sln
     - name: Build Solution
       run: msbuild SampleProjects.sln
-    
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
